@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FasalSathi — Smart Farming, Better Future</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/static/css/style.css" />
   <style>
     :root {
       --cream-bg: #f6f3ea;
@@ -76,7 +76,6 @@
     .brand-title { font-weight: 800; font-size: 1.05rem; color: var(--forest-dark); line-height: 1.1; }
     .brand-sub { font-size: 0.74rem; color: var(--text-muted); }
 
-    /* Force readable inputs across external style.css overrides */
     .login-card input,
     .login-card select,
     .ws-page input,
@@ -498,7 +497,7 @@
           <span style="font-size:1.35rem;">🌿</span>
           <div>
             <div class="brand-title">FasalSathi</div>
-            <div class="brand-sub">Smart Farming, Better Future</div>
+            <div class="brand-sub" data-i18n="brandSub">Smart Farming, Better Future</div>
           </div>
         </div>
         <select id="login-lang-select" onchange="setLanguage(this.value)" style="width:auto !important; min-width:95px !important; padding:6px 8px !important; font-size:0.82rem !important;">
@@ -513,16 +512,16 @@
         </select>
       </div>
 
-      <h2 style="margin:6px 0 4px; font-family:Georgia, serif; color:var(--forest-dark); font-size:1.45rem;">
+      <h2 data-i18n="loginHeading" style="margin:6px 0 4px; font-family:Georgia, serif; color:var(--forest-dark); font-size:1.45rem;">
         Welcome back to FasalSathi 🌱
       </h2>
-      <p style="margin:0 0 18px; font-size:0.85rem; color:var(--text-muted);">
+      <p data-i18n="loginSub" style="margin:0 0 18px; font-size:0.85rem; color:var(--text-muted);">
         Login to continue to your smart farming dashboard across India.
       </p>
 
       <form onsubmit="event.preventDefault(); loginFarmer();" style="display:flex; flex-direction:column; gap:13px;">
         <div>
-          <label for="login-name" class="field-label">Farmer Name</label>
+          <label for="login-name" class="field-label" data-i18n="labelFarmerName">Farmer Name</label>
           <div class="input-mic-wrap">
             <input type="text" id="login-name" value="Soubhagya" placeholder="Enter farmer name" required />
             <button type="button" class="mic-square-btn" title="Speak Name" onclick="startVoiceInput('login-name')">🎤</button>
@@ -530,7 +529,7 @@
         </div>
 
         <div>
-          <label for="login-district" class="field-label">District / City</label>
+          <label for="login-district" class="field-label" data-i18n="labelDistrict">District / City</label>
           <div class="input-mic-wrap">
             <input type="text" id="login-district" value="Bhubaneswar" placeholder="Enter district (e.g. Bhubaneswar, Puri)" required />
             <button type="button" class="mic-square-btn" title="Speak District" onclick="startVoiceInput('login-district')">🎤</button>
@@ -539,23 +538,23 @@
 
         <div class="two-col-login">
           <div>
-            <label for="login-acres" class="field-label">Land (Acres)</label>
+            <label for="login-acres" class="field-label" data-i18n="labelAcres">Land (Acres)</label>
             <input type="number" id="login-acres" value="2" min="0.5" step="0.5" placeholder="2" />
           </div>
           <div>
-            <label for="login-crop" class="field-label">Main Crop</label>
+            <label for="login-crop" class="field-label" data-i18n="labelMainCrop">Main Crop</label>
             <input type="text" id="login-crop" value="Paddy" placeholder="e.g. Paddy, Wheat" />
           </div>
         </div>
 
-        <button type="submit" class="btn-green" style="width:100%; padding:12px; font-size:0.95rem; margin-top:4px;">
+        <button type="submit" class="btn-green" data-i18n="loginContinueBtn" style="width:100%; padding:12px; font-size:0.95rem; margin-top:4px;">
           Login & Continue →
         </button>
       </form>
 
       <div style="text-align:center; margin-top:14px; font-size:0.84rem; color:var(--text-muted);">
-        Don't have an account?
-        <button type="button" onclick="continueGuestToLanding()" style="background:none; border:none; color:#1c3b2a; font-weight:700; cursor:pointer; text-decoration:underline;">
+        <span data-i18n="noAccountText">Don't have an account?</span>
+        <button type="button" data-i18n="openLandingBtn" onclick="continueGuestToLanding()" style="background:none; border:none; color:#1c3b2a; font-weight:700; cursor:pointer; text-decoration:underline;">
           Open Landing Page
         </button>
       </div>
@@ -571,13 +570,13 @@
         <span style="font-size:1.35rem;">🌿</span>
         <div>
           <div class="brand-title">FasalSathi</div>
-          <div class="brand-sub">Smart Farming, Better Future</div>
+          <div class="brand-sub" data-i18n="brandSub">Smart Farming, Better Future</div>
         </div>
       </div>
 
       <nav class="top-nav-links">
-        <a onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">How It Works</a>
-        <a onclick="document.getElementById('smart-tools-preview').scrollIntoView({behavior:'smooth'})">Smart Tools</a>
+        <a data-i18n="howItWorks" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">How It Works</a>
+        <a data-i18n="smartTools" onclick="document.getElementById('smart-tools-preview').scrollIntoView({behavior:'smooth'})">Smart Tools</a>
         <select id="landing-lang-select" onchange="setLanguage(this.value)">
           <option value="hi" selected>हिन्दी</option>
           <option value="en">English</option>
@@ -589,40 +588,40 @@
           <option value="pa">ਪੰਜਾਬੀ</option>
         </select>
         <button type="button" id="auto-voice-btn-landing" class="btn-white" onclick="toggleAutoVoice()">🔊 Auto-Voice: ON</button>
-        <button type="button" class="btn-white" onclick="showLoginScreen()">Login</button>
-        <button type="button" class="btn-green" onclick="openWorkspace('page-dashboard')">Get Started</button>
+        <button type="button" class="btn-white" data-i18n="login" onclick="showLoginScreen()">Login</button>
+        <button type="button" class="btn-green" data-i18n="getStarted" onclick="openWorkspace('page-dashboard')">Get Started</button>
       </nav>
     </header>
 
     <section class="hero-banner">
       <div class="hero-inner">
         <div>
-          <div class="eyebrow">• AI-POWERED CROP INTELLIGENCE</div>
-          <h1 class="hero-serif">Your Farm.<br>Your Camera.<br>Smarter Decisions.</h1>
-          <p class="hero-desc">
+          <div class="eyebrow" data-i18n="heroEyebrow">• AI-POWERED CROP INTELLIGENCE</div>
+          <h1 class="hero-serif" data-i18n="heroTitle">Your Farm. Your Camera. Smarter Decisions.</h1>
+          <p class="hero-desc" data-i18n="heroSubtitle">
             FasalSathi uses computer vision, real-time agro-weather, live APMC mandi data, and multilingual voice AI to track crop growth, detect issues early, and maximize profit across India.
           </p>
           <div class="row-flex" style="justify-content:flex-start;">
-            <button type="button" class="btn-green" onclick="openWorkspace('page-dashboard')">Open Farm Dashboard →</button>
-            <button type="button" class="btn-white" onclick="openWorkspace('page-scan')">🌱 Scan Crop & Growth</button>
+            <button type="button" class="btn-green" data-i18n="openDashboard" onclick="openWorkspace('page-dashboard')">Open Farm Dashboard →</button>
+            <button type="button" class="btn-white" data-i18n="scanCrop" onclick="openWorkspace('page-scan')">🌱 Scan Crop & Growth</button>
           </div>
           <div style="margin-top:16px; font-size:0.84rem; color:var(--text-main);">
-            👨‍🌾👨‍🌾👨‍🌾 <strong>Trusted by farmers across India</strong>
+            👨‍🌾👨‍🌾👨‍🌾 <strong data-i18n="trustedFarmers">Trusted by farmers across India</strong>
           </div>
         </div>
 
         <div class="location-box">
-          <div class="eyebrow">📍 YOUR FARM LOCATION</div>
+          <div class="eyebrow" data-i18n="yourFarmLocation">📍 YOUR FARM LOCATION</div>
           <h2 id="weather-location-title" style="margin:3px 0 8px; font-size:1.35rem;">Bhubaneswar, Odisha</h2>
 
           <div class="row-flex">
             <input type="text" id="district-input" placeholder="Enter city or village (e.g. Bhubaneswar, Puri, Pune)..." />
-            <button type="button" class="btn-green" onclick="searchDistrictWeather()">Search</button>
+            <button type="button" class="btn-green" data-i18n="search" onclick="searchDistrictWeather()">Search</button>
           </div>
 
           <div style="display:flex; justify-content:space-between; font-size:0.82rem;">
-            <span onclick="useMyLocation()" style="cursor:pointer; font-weight:600; color:var(--forest-dark);">◎ Use My Location</span>
-            <span onclick="speakWeatherNow()" style="cursor:pointer; font-weight:600; color:var(--forest-mid);">🔊 Suniye</span>
+            <span data-i18n="useMyLocation" onclick="useMyLocation()" style="cursor:pointer; font-weight:600; color:var(--forest-dark);">◎ Use My Location</span>
+            <span data-i18n="suniyeBtn" onclick="speakWeatherNow()" style="cursor:pointer; font-weight:600; color:var(--forest-mid);">🔊 Suniye</span>
           </div>
 
           <div class="weather-strip">
@@ -631,17 +630,17 @@
               <div id="weather-condition" style="font-size:0.82rem; color:var(--text-muted);">Partly Cloudy</div>
             </div>
             <div style="text-align:right; font-size:0.8rem; color:var(--text-muted); line-height:1.55;">
-              <div>💧 Humidity <strong id="weather-humidity">68%</strong></div>
-              <div>🌧️ Rain <strong id="weather-rain">10%</strong></div>
-              <div>💨 Wind <strong id="weather-wind">12 km/h</strong></div>
+              <div>💧 <span data-i18n="humidityLabel">Humidity</span> <strong id="weather-humidity">68%</strong></div>
+              <div>🌧️ <span data-i18n="rainLabel">Rain</span> <strong id="weather-rain">10%</strong></div>
+              <div>💨 <span data-i18n="windLabel">Wind</span> <strong id="weather-wind">12 km/h</strong></div>
             </div>
           </div>
 
-          <div class="status-row"><span>Water Stress</span><span class="pill">Low</span></div>
-          <div class="status-row"><span>Crop Health & Growth</span><span class="pill">86% Healthy</span></div>
-          <div class="status-row" style="border-bottom:none;"><span>Disease Risk</span><span class="pill">Normal</span></div>
+          <div class="status-row"><span data-i18n="waterStress">Water Stress</span><span class="pill" data-i18n="lowLabel">Low</span></div>
+          <div class="status-row"><span data-i18n="cropHealthGrowth">Crop Health & Growth</span><span class="pill">86%</span></div>
+          <div class="status-row" style="border-bottom:none;"><span data-i18n="diseaseRisk">Disease Risk</span><span class="pill" data-i18n="normalLabel">Normal</span></div>
 
-          <p id="weather-advisory" style="margin:8px 0 0; font-size:0.82rem; color:var(--forest-dark); font-weight:500;">
+          <p id="weather-advisory" data-i18n="weatherAdvisory" style="margin:8px 0 0; font-size:0.82rem; color:var(--forest-dark); font-weight:500;">
             Favorable weather for daily growth monitoring and recovery care.
           </p>
         </div>
@@ -650,39 +649,39 @@
 
     <section id="how-it-works" class="section-wrap">
       <div class="center-head">
-        <div class="eyebrow">HOW IT WORKS</div>
-        <h2 class="serif-heading">From field data to smarter decisions.</h2>
+        <div class="eyebrow" data-i18n="howItWorksUpper">HOW IT WORKS</div>
+        <h2 class="serif-heading" data-i18n="howItWorksHeading">From field data to smarter decisions.</h2>
       </div>
       <div class="grid-4">
-        <div class="card"><div class="eyebrow">01</div><h3 style="margin:6px 0;">Capture</h3><p style="margin:0; font-size:0.85rem; color:var(--text-muted);">Upload leaf photo, choose district, or speak with mic in your language.</p></div>
-        <div class="card"><div class="eyebrow">02</div><h3 style="margin:6px 0;">Analyze</h3><p style="margin:0; font-size:0.85rem; color:var(--text-muted);">AI checks crop issue/recovery alongside daily growth and weather.</p></div>
-        <div class="card"><div class="eyebrow">03</div><h3 style="margin:6px 0;">Understand</h3><p style="margin:0; font-size:0.85rem; color:var(--text-muted);">View day-by-day progress, weekend result, and live mandi vs MSP.</p></div>
-        <div class="card"><div class="eyebrow">04</div><h3 style="margin:6px 0;">Act</h3><p style="margin:0; font-size:0.85rem; color:var(--text-muted);">Follow clear recovery/growth steps with voice readout.</p></div>
+        <div class="card"><div class="eyebrow">01</div><h3 style="margin:6px 0;" data-i18n="step1Title">Capture</h3><p style="margin:0; font-size:0.85rem; color:var(--text-muted);" data-i18n="step1Desc">Upload leaf photo, choose district, or speak with mic in your language.</p></div>
+        <div class="card"><div class="eyebrow">02</div><h3 style="margin:6px 0;" data-i18n="step2Title">Analyze</h3><p style="margin:0; font-size:0.85rem; color:var(--text-muted);" data-i18n="step2Desc">AI checks crop issue/recovery alongside daily growth and weather.</p></div>
+        <div class="card"><div class="eyebrow">03</div><h3 style="margin:6px 0;" data-i18n="step3Title">Understand</h3><p style="margin:0; font-size:0.85rem; color:var(--text-muted);" data-i18n="step3Desc">View day-by-day progress, weekend result, and live mandi vs MSP.</p></div>
+        <div class="card"><div class="eyebrow">04</div><h3 style="margin:6px 0;" data-i18n="step4Title">Act</h3><p style="margin:0; font-size:0.85rem; color:var(--text-muted);" data-i18n="step4Desc">Follow clear recovery/growth steps with voice readout.</p></div>
       </div>
     </section>
 
     <section id="smart-tools-preview" class="section-wrap" style="padding-top:0;">
       <div class="center-head">
-        <div class="eyebrow">SMART FARMING TOOLS</div>
-        <h2 class="serif-heading">Explore your farm with confidence.</h2>
+        <div class="eyebrow" data-i18n="smartToolsUpper">SMART FARMING TOOLS</div>
+        <h2 class="serif-heading" data-i18n="smartToolsHeading">Explore your farm with confidence.</h2>
       </div>
       <div class="grid-3">
         <div class="card" style="cursor:pointer;" onclick="openWorkspace('page-explore')">
           <div class="eyebrow">01 • GUIDE</div>
-          <h3 style="margin:6px 0;">Explore Crops & ROI</h3>
-          <p style="margin:0 0 12px; font-size:0.85rem; color:var(--text-muted);">Crop profiles, soil suitability, and profit estimates.</p>
+          <h3 style="margin:6px 0;" data-i18n="tool1Title">Explore Crops & ROI</h3>
+          <p style="margin:0 0 12px; font-size:0.85rem; color:var(--text-muted);" data-i18n="tool1Desc">Crop profiles, soil suitability, and profit estimates.</p>
           <span style="font-weight:700; color:var(--forest-dark);">→</span>
         </div>
         <div class="card" style="background:var(--gold-soft); cursor:pointer;" onclick="openWorkspace('page-scan')">
           <div class="eyebrow">02 • VISION + GROWTH</div>
-          <h3 style="margin:6px 0;">Crop Doctor & Growth</h3>
-          <p style="margin:0 0 12px; font-size:0.85rem; color:var(--text-muted);">Shows issue, recovery steps, and growth timeline together.</p>
+          <h3 style="margin:6px 0;" data-i18n="tool2Title">Crop Doctor & Growth</h3>
+          <p style="margin:0 0 12px; font-size:0.85rem; color:var(--text-muted);" data-i18n="tool2Desc">Shows issue, recovery steps, and growth timeline together.</p>
           <span style="font-weight:700; color:var(--forest-dark);">→</span>
         </div>
         <div class="card" style="background:var(--sage-soft); cursor:pointer;" onclick="openWorkspace('page-dashboard')">
           <div class="eyebrow">03 • DAILY & WEEKEND</div>
-          <h3 style="margin:6px 0;">Daily Growth & Weekend Result</h3>
-          <p style="margin:0 0 12px; font-size:0.85rem; color:var(--text-muted);">Day-by-day weather-linked growth/issue log + weekend summary.</p>
+          <h3 style="margin:6px 0;" data-i18n="tool3Title">Daily Growth & Weekend Result</h3>
+          <p style="margin:0 0 12px; font-size:0.85rem; color:var(--text-muted);" data-i18n="tool3Desc">Day-by-day weather-linked growth/issue log + weekend summary.</p>
           <span style="font-weight:700; color:var(--forest-dark);">→</span>
         </div>
       </div>
@@ -700,16 +699,16 @@
             <span style="font-size:1.3rem;">🌿</span>
             <div>
               <div class="brand-title">FasalSathi</div>
-              <div class="brand-sub">Smart Farming, Better Future</div>
+              <div class="brand-sub" data-i18n="brandSub">Smart Farming, Better Future</div>
             </div>
           </div>
 
-          <button type="button" class="side-link active" data-page="page-dashboard" onclick="switchWorkspacePage('page-dashboard', this)">🏠 Dashboard & Weekly</button>
-          <button type="button" class="side-link" data-page="page-zones" onclick="switchWorkspacePage('page-zones', this)">🗺️ Farm Zones & Growth</button>
-          <button type="button" class="side-link" data-page="page-scan" onclick="switchWorkspacePage('page-scan', this)">🩺 Crop Doctor + Growth</button>
-          <button type="button" class="side-link" data-page="page-explore" onclick="switchWorkspacePage('page-explore', this)">🌱 Explore Crops & ROI</button>
-          <button type="button" class="side-link" data-page="page-mandi" onclick="switchWorkspacePage('page-mandi', this)">📊 Mandi vs MSP</button>
-          <button type="button" class="side-link" data-page="page-chat" onclick="switchWorkspacePage('page-chat', this)">🤖 Krushi Voice AI</button>
+          <button type="button" class="side-link active" data-page="page-dashboard" data-i18n="navDashboard" onclick="switchWorkspacePage('page-dashboard', this)">🏠 Dashboard & Weekly</button>
+          <button type="button" class="side-link" data-page="page-zones" data-i18n="navZones" onclick="switchWorkspacePage('page-zones', this)">🗺️ Farm Zones & Growth</button>
+          <button type="button" class="side-link" data-page="page-scan" data-i18n="navScan" onclick="switchWorkspacePage('page-scan', this)">🩺 Crop Doctor + Growth</button>
+          <button type="button" class="side-link" data-page="page-explore" data-i18n="navExplore" onclick="switchWorkspacePage('page-explore', this)">🌱 Explore Crops & ROI</button>
+          <button type="button" class="side-link" data-page="page-mandi" data-i18n="navMandi" onclick="switchWorkspacePage('page-mandi', this)">📊 Mandi vs MSP</button>
+          <button type="button" class="side-link" data-page="page-chat" data-i18n="navChat" onclick="switchWorkspacePage('page-chat', this)">🤖 Krushi Voice AI</button>
         </div>
 
         <div style="border-top:1px solid var(--border-soft); padding-top:12px;">
@@ -724,8 +723,8 @@
             <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
           </select>
           <button type="button" id="auto-voice-btn-app" class="btn-white" style="width:100%; margin-bottom:6px;" onclick="toggleAutoVoice()">🔊 Auto-Voice: ON</button>
-          <button type="button" class="btn-white" style="width:100%; margin-bottom:6px;" onclick="showLandingView()">← Home Page</button>
-          <button type="button" class="btn-white" style="width:100%;" onclick="showLoginScreen()">👤 Switch Farmer</button>
+          <button type="button" class="btn-white" data-i18n="homePageBtn" style="width:100%; margin-bottom:6px;" onclick="showLandingView()">← Home Page</button>
+          <button type="button" class="btn-white" data-i18n="switchFarmerBtn" style="width:100%;" onclick="showLoginScreen()">👤 Switch Farmer</button>
         </div>
       </aside>
 
@@ -736,42 +735,42 @@
             <div id="workspace-farmer-meta" style="font-size:0.82rem; color:var(--text-muted);">Farmer: Soubhagya • Bhubaneswar, Odisha</div>
           </div>
           <div class="row-flex" style="margin:0;">
-            <button type="button" class="btn-green" onclick="switchWorkspacePage('page-scan')">🌱 Scan Crop & Growth</button>
-            <button type="button" class="btn-white" onclick="switchWorkspacePage('page-chat')">🎤 Ask Voice AI</button>
+            <button type="button" class="btn-green" data-i18n="scanCrop" onclick="switchWorkspacePage('page-scan')">🌱 Scan Crop & Growth</button>
+            <button type="button" class="btn-white" data-i18n="askVoiceAiBtn" onclick="switchWorkspacePage('page-chat')">🎤 Ask Voice AI</button>
           </div>
         </div>
 
         <div id="page-dashboard" class="ws-page">
           <div class="kpi-grid">
             <div class="card">
-              <div class="eyebrow">OVERALL FARM HEALTH</div>
+              <div class="eyebrow" data-i18n="kpiHealth">OVERALL FARM HEALTH</div>
               <div style="font-size:1.8rem; font-weight:800; margin:4px 0;">86%</div>
-              <div style="font-size:0.8rem; color:var(--forest-mid);">Steady • Recovery improving</div>
+              <div style="font-size:0.8rem; color:var(--forest-mid);" data-i18n="statusRecovering">Recovering</div>
             </div>
             <div class="card">
-              <div class="eyebrow">TODAY'S WEATHER</div>
+              <div class="eyebrow" data-i18n="kpiWeather">TODAY'S WEATHER</div>
               <div id="dash-weather-temp" style="font-size:1.8rem; font-weight:800; margin:4px 0;">29°C</div>
               <div id="dash-weather-loc" style="font-size:0.8rem; color:var(--text-muted);">Bhubaneswar, Odisha</div>
             </div>
             <div class="card">
-              <div class="eyebrow">CROP GROWTH STAGE</div>
+              <div class="eyebrow" data-i18n="kpiStage">CROP GROWTH STAGE</div>
               <div id="dash-growth-stage" style="font-size:1.3rem; font-weight:800; margin:6px 0; color:var(--forest-dark);">Vegetative (Day 21–40)</div>
-              <div style="font-size:0.8rem; color:var(--text-muted);">Next: Flowering</div>
+              <div style="font-size:0.8rem; color:var(--text-muted);" data-i18n="statusHealthy">Healthy Growth</div>
             </div>
           </div>
 
           <div class="card" style="margin-bottom:18px;">
-            <h3 style="margin-top:0;">🌱 Crop Growth Stage Timeline</h3>
+            <h3 style="margin-top:0;" data-i18n="growthTimelineTitle">🌱 Crop Growth Stage Timeline</h3>
             <div class="growth-steps" id="dash-growth-timeline"></div>
           </div>
 
           <div class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
               <div>
-                <div class="eyebrow">DAILY WEATHER-LINKED GROWTH & ISSUE LOG</div>
-                <h3 style="margin:2px 0;">📅 Day-by-Day Progress, Issue Recovery & Weekend Result</h3>
+                <div class="eyebrow" data-i18n="dailyLogEyebrow">DAILY WEATHER-LINKED GROWTH & ISSUE LOG</div>
+                <h3 style="margin:2px 0;" data-i18n="dailyLogHeading">📅 Day-by-Day Progress, Issue Recovery & Weekend Result</h3>
               </div>
-              <button type="button" class="btn-green" onclick="speakWeekendSummary()">🔊 Weekend Result Sunein</button>
+              <button type="button" class="btn-green" data-i18n="weekendSpeakBtn" onclick="speakWeekendSummary()">🔊 Weekend Result Sunein</button>
             </div>
 
             <div class="row-flex">
@@ -782,7 +781,7 @@
                 <option value="Healthy Growth">Healthy Growth</option>
                 <option value="Issue Spotted">Issue Spotted</option>
               </select>
-              <button type="button" class="btn-green" onclick="logNextDayProgress()">+ Add Next Day</button>
+              <button type="button" class="btn-green" data-i18n="addNextDayBtn" onclick="logNextDayProgress()">+ Add Next Day</button>
             </div>
 
             <div id="daily-log-list" class="daily-grid"></div>
@@ -795,8 +794,8 @@
           <div class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
               <div>
-                <div class="eyebrow">DIGITAL FARM ZONES</div>
-                <h3 style="margin:2px 0;">Your farm, growing in real time.</h3>
+                <div class="eyebrow" data-i18n="navZones">🗺️ Farm Zones & Growth</div>
+                <h3 style="margin:2px 0;" data-i18n="growthTimelineTitle">🌱 Crop Growth Stage Timeline</h3>
               </div>
               <div class="row-flex" style="margin:0;">
                 <button type="button" class="btn-white" onclick="selectZone('Zone A')">Zone A</button>
@@ -812,9 +811,9 @@
         <div id="page-scan" class="ws-page" style="display:none;">
           <div class="grid-2">
             <div class="card">
-              <h3 style="margin-top:0;">🩺 AI Crop Doctor & Growth Scanner</h3>
-              <p style="font-size:0.85rem; color:var(--text-muted);">
-                Photo upload karein—AI <strong>issue/disease</strong> ke saath <strong>crop growth stage & timeline</strong> bhi batayega.
+              <h3 style="margin-top:0;" data-i18n="scanCardTitle">🩺 AI Crop Doctor & Growth Scanner</h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);" data-i18n="tool2Desc">
+                Shows issue, recovery steps, and growth timeline together.
               </p>
               <div class="row-flex">
                 <input type="text" id="scan-crop-name" value="Paddy (Dhan)" placeholder="Crop name" />
@@ -828,14 +827,14 @@
               </div>
               <div class="row-flex">
                 <input type="file" id="leaf-image-input" accept="image/*" />
-                <button type="button" class="btn-green" onclick="diagnoseLeafAndGrowth()">Analyze Issue & Growth</button>
+                <button type="button" class="btn-green" data-i18n="analyzeBtn" onclick="diagnoseLeafAndGrowth()">Analyze Issue & Growth</button>
               </div>
             </div>
 
             <div class="card">
-              <h3 style="margin-top:0;">📈 Issue + Crop Growth Report</h3>
+              <h3 style="margin-top:0;" data-i18n="reportCardTitle">📈 Issue + Crop Growth Report</h3>
               <div id="disease-output" style="font-size:0.88rem; color:var(--text-muted);">
-                Photo upload karke "Analyze Issue & Growth" dabayein.
+                Upload a photo and click Analyze Issue & Growth.
               </div>
               <div id="scan-growth-timeline" class="growth-steps"></div>
             </div>
@@ -845,7 +844,7 @@
         <div id="page-explore" class="ws-page" style="display:none;">
           <div class="grid-2">
             <div class="card">
-              <h3 style="margin-top:0;">🌱 Explore Crops & Soil Suitability</h3>
+              <h3 style="margin-top:0;" data-i18n="exploreCardTitle">🌱 Explore Crops & Soil Suitability</h3>
               <div class="row-flex">
                 <select id="explore-crop-select" onchange="renderCropProfile()">
                   <option value="Paddy">Paddy (Dhan)</option>
@@ -853,13 +852,13 @@
                   <option value="Cotton">Cotton (Kapas)</option>
                   <option value="Tomato">Tomato (Tamatar)</option>
                 </select>
-                <button type="button" class="btn-white" onclick="speakCropProfile()">🔊 Suniye</button>
+                <button type="button" class="btn-white" data-i18n="suniyeBtn" onclick="speakCropProfile()">🔊 Suniye</button>
               </div>
               <div id="crop-profile-box" style="margin-top:10px; font-size:0.88rem;"></div>
             </div>
 
             <div class="card">
-              <h3 style="margin-top:0;">💰 Smart Crop & ROI Advisor</h3>
+              <h3 style="margin-top:0;" data-i18n="roiCardTitle">💰 Smart Crop & ROI Advisor</h3>
               <div class="row-flex">
                 <select id="roi-season">
                   <option value="Kharif">Kharif</option>
@@ -888,24 +887,24 @@
 
         <div id="page-mandi" class="ws-page" style="display:none;">
           <div class="card">
-            <h3 style="margin-top:0;">📊 Live APMC Mandi vs MSP</h3>
+            <h3 style="margin-top:0;" data-i18n="mandiCardTitle">📊 Live APMC Mandi vs MSP</h3>
             <div id="mandi-output"></div>
           </div>
         </div>
 
         <div id="page-chat" class="ws-page" style="display:none;">
           <div class="card">
-            <h3 style="margin-top:0;">🤖 Krushi Sahayak Voice AI</h3>
-            <p style="font-size:0.85rem; color:var(--text-muted);">Mic se bolein ya type karein — jawab screen aur awaaz dono mein milega.</p>
+            <h3 style="margin-top:0;" data-i18n="chatCardTitle">🤖 Krushi Sahayak Voice AI</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted);" data-i18n="chatSub">Speak with mic or type — get answers on screen and voice.</p>
             <div id="chat-messages" class="chat-box">
-              <div style="background:#fff; padding:9px; border-radius:8px; border:1px solid #ece8de; font-size:0.88rem;">
-                🤖 Namaste! Fasal ki bimari, crop growth, khaad, mandi bhav ya yojana ke baare mein poochein.
+              <div data-i18n="chatWelcome" style="background:#fff; padding:9px; border-radius:8px; border:1px solid #ece8de; font-size:0.88rem;">
+                🤖 Namaste! Ask about crop disease, growth, fertilizers, mandi rates, or schemes.
               </div>
             </div>
             <div class="row-flex">
-              <input type="text" id="chat-input" placeholder="Apna sawal likhein ya mic dabayein..." />
+              <input type="text" id="chat-input" placeholder="Type your question or press mic..." />
               <button type="button" class="btn-mic" onclick="startVoiceInput('chat-input', (t) => sendChatMessage(t))">🎤</button>
-              <button type="button" class="btn-green" onclick="sendChatMessage()">Send</button>
+              <button type="button" class="btn-green" data-i18n="sendBtn" onclick="sendChatMessage()">Send</button>
             </div>
           </div>
         </div>
@@ -914,6 +913,6 @@
     </div>
   </div>
 
-  <script src="/js/app.js"></script>
+  <script src="/static/js/app.js"></script>
 </body>
 </html>

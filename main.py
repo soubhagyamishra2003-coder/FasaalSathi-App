@@ -1,7 +1,8 @@
 import os
+from typing import Optional
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -17,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount frontend static assets (supports both /static/... and relative css/js paths)
+# Mount frontend static assets (supports both /static/... and /css, /js paths)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/css", StaticFiles(directory="static/css"), name="css")
 app.mount("/js", StaticFiles(directory="static/js"), name="js")
@@ -26,6 +27,11 @@ app.mount("/js", StaticFiles(directory="static/js"), name="js")
 @app.get("/")
 def serve_app():
     return FileResponse("static/index.html")
+
+
+@app.get("/.well-known/appspecific/com.chrome.devtools.json")
+def chrome_devtools_probe():
+    return Response(status_code=204)
 
 
 # 1. Agro-Weather & Cyclone Radar
@@ -96,13 +102,17 @@ def recommend_crops(req: RoiReq):
 # 4. Multimodal AI Plant Doctor
 class DiseaseReq(BaseModel):
     image_base64: str
+    crop: Optional[str] = "Paddy"
+    stage: Optional[str] = "Vegetative"
     language: str = "en"
 
 
 @app.post("/api/diagnose-disease")
 def diagnose_disease(req: DiseaseReq):
+    crop_label = req.crop or "Crop"
+    stage_label = req.stage or "Vegetative"
     return {
-        "disease_name": "Rice Leaf Blast (Magnaporthe oryzae)",
+        "disease_name": f"Rice Leaf Blast / {crop_label} Stress ({stage_label})",
         "confidence": 94,
         "organic_treatment": "Spray Neem Oil (10,000 ppm) @ 3 ml/L or Pseudomonas fluorescens @ 5 g/L.",
         "chemical_dosage": "Tricyclazole 75% WP @ 0.6 g/L of water.",
